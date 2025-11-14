@@ -6,7 +6,6 @@ import SongDetail from "./pages/SongDetail"; // song detail page
 import FooterNav from "./components/FooterNav";
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState("Home");
 
   return (
     <BrowserRouter>
@@ -19,7 +18,7 @@ export default function App() {
         </Routes>
 
         {/* Footer Navigation */}
-        <FooterNav activeTab={activeTab} setActiveTab={setActiveTab} />
+        <FooterNav  />
       </div>
     </BrowserRouter>
   );
