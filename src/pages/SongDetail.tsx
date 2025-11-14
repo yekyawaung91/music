@@ -12,8 +12,6 @@ type LyricLine = {
 export default function SongDetail() {
   const { id } = useParams();
   const song = songs.find((s) => s.id === Number(id));
-
-  const [lyricsText, setLyricsText] = useState("");
   const [lyricsLines, setLyricsLines] = useState<LyricLine[]>([]);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -55,29 +53,30 @@ export default function SongDetail() {
   };
 
   // Fetch lyrics & parse
-  useEffect(() => {
-    if (!song?.lyrics) return;
+  // Fetch lyrics & parse
+useEffect(() => {
+  if (!song?.lyrics) return;
 
-    fetch(`/src/data/${song.lyrics}`)
-      .then((res) => res.text())
-      .then((t) => {
-        setLyricsText(t);
+  fetch(`/src/data/${song.lyrics}`)
+    .then((res) => res.text())
+    .then((t) => {
+      // Parse lyrics lines
+      const lines: LyricLine[] = t
+        .split("\n")
+        .map((line) => {
+          const match = line.match(/\[(\d+):(\d+)\]\s*(.*)/);
+          if (!match) return null;
+          const minutes = parseInt(match[1]);
+          const seconds = parseInt(match[2]);
+          return { time: minutes * 60 + seconds, text: match[3] };
+        })
+        .filter(Boolean) as LyricLine[];
 
-        const lines: LyricLine[] = t
-          .split("\n")
-          .map((line) => {
-            const match = line.match(/\[(\d+):(\d+)\]\s*(.*)/);
-            if (!match) return null;
-            const minutes = parseInt(match[1]);
-            const seconds = parseInt(match[2]);
-            return { time: minutes * 60 + seconds, text: match[3] };
-          })
-          .filter(Boolean) as LyricLine[];
+      setLyricsLines(lines);
+    })
+    .catch(() => setLyricsLines([{ time: 0, text: "Lyrics not available." }]));
+}, [song]);
 
-        setLyricsLines(lines);
-      })
-      .catch(() => setLyricsText("Lyrics not available."));
-  }, [song]);
 
   if (!song) {
     return (
