@@ -4,6 +4,7 @@
     import tailwindcss from '@tailwindcss/vite';
 
     export default defineConfig({
+      base: '/',
       plugins: [
         react(), // Or your framework's plugin
         tailwindcss(),
