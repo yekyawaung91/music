@@ -28,7 +28,7 @@ export default function Header() {
       {/* Header */}
       <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-purple-900 text-white shadow-md">
         <h1 className="text-2xl font-bold flex items-center gap-2">
-          <Music2 />𝕐𝕂𝔸 𝕄𝕦𝕚𝕤𝕔
+          <Music2 />𝕐𝕂𝔸 𝕄𝕦𝕤𝕚𝕔
         </h1>
         <img
           src="/user.png"
@@ -73,9 +73,13 @@ export default function Header() {
 
                 {/* User Info */}
                 <div className="flex items-center gap-4 mt-4">
-                  <User size={28} className="text-white" />
+                  <img
+          src="/user.png"
+          alt="User Avatar"
+          className="w-10 h-10 rounded-full border border-white/30"
+        />
                   <div className="flex flex-col">
-                    <span className="font-semibold text-lg text-white">John Doe</span>
+                    <span className="font-semibold text-lg text-white">Ye Kyaw Aung</span>
                     <span className="text-sm text-white/70">Premium Member</span>
                   </div>
                 </div>

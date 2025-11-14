@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import songs from "../data/songs.json";
 import { useEffect, useRef, useState } from "react";
-import { Heart, Clock, Play, Pause } from "lucide-react";
+import { Heart, Clock, Play, Pause, Album } from "lucide-react";
 
 type LyricLine = {
   time: number;
@@ -96,7 +96,7 @@ useEffect(() => {
   <div className="flex-shrink-0 w-[35%]">
     <div className="w-full aspect-square rounded-3xl overflow-hidden shadow-xl">
       <img
-        src={song.image}
+        src={`/artworks/${song.image}`}
         alt={song.title}
         className="w-full h-full object-cover"
       />
@@ -106,9 +106,11 @@ useEffect(() => {
   {/* Song Info 60% */}
   <div className="flex flex-col gap-1 w-[65%]">
     <h1 className="text-xl font-bold">{song.title}</h1>
-    <p className="text-md text-slate-200">{song.artist}</p>
-    <p className="flex items-center gap-2 text-slate-200">
-      <Clock size={18} className="text-slate-200" />
+    <p className="text-md text-amber-300">{song.artist}</p>
+    <p className="flex items-center gap-2 text-sm text-slate-200">
+      <Album size={16} className="text-slate-200" />
+      {song.album}, 
+      <Clock size={16} className="text-slate-200" />
       {formatTime(duration)}
     </p>
 

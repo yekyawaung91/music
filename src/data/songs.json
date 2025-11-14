@@ -1,20 +1,32 @@
 [
   {
     "id": 1,
-    "image": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/artworks/what-i've-done.png",
+    "image": "what-i've-done.png",
     "title": "What I've Done",
     "artist": "Linkin Park",
-    "Released": 2009,
-    "audio": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/mp3/what-i've-done.mp3",
+    "released": 2007,
+    "album": "Minutes To Midnight",
+    "audio": "https://www.dropbox.com/scl/fi/sb7h5awlm3j3n36agq29o/what-i-ve-done.mp3?dl=1",
     "lyrics": "what-i've-done.txt"
   },
   {
     "id": 2,
-    "image": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/artworks/need-you-now.png",
+    "image": "need-you-now.png",
     "title": "Need You Now",
     "artist": "Lady A",
-    "Released": 2009,
-    "audio": "https://www.dropbox.com/s/tpl253bhdrpyf7zrc3noa/need-you-now.mp3?dl=1",
+    "released": 2010,
+    "album": "Lady Antebellum",
+    "audio": "https://www.dropbox.com/scl/fi/tpl253bhdrpyf7zrc3noa/need-you-now.mp3?dl=1",
     "lyrics": "need-you-now.txt"
+  },
+  {
+    "id": 3,
+    "image": "dancing-with-your-ghost.png",
+    "title": "Dancing With Your Ghost",
+    "artist": "Sasha Alex Sloan",
+    "released": 2019,
+    "album": "Self Portrait",
+    "audio": "https://www.dropbox.com/scl/fi/14fglx9gueww5xrl59fey/dancing-with-your-ghost.mp3?dl=1",
+    "lyrics": "dancing-with-your-ghost.txt"
   }
 ]

@@ -126,7 +126,7 @@ export default function Explore() {
             whileHover={{ scale: 1.03 }}
           >
             <img
-              src={song.image}
+              src={`/artworks/${song.image}`}
               className="w-full h-full object-contain bg-black/20 rounded-xl"
             />
             <motion.div
