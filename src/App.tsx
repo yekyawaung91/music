@@ -1,19 +1,26 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
+import SongDetail from "./pages/SongDetail"; // song detail page
 import FooterNav from "./components/FooterNav";
 
 export default function App() {
   const [activeTab, setActiveTab] = useState("Home");
 
   return (
-    <div className="min-h-screen pb-20">
-      {activeTab === "Home" && <Home />}
-      {activeTab === "Explore" && <Explore />}
+    <BrowserRouter>
+      <div className="min-h-screen pb-20">
+        {/* Routes for pages */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/song/:id" element={<SongDetail />} />
+        </Routes>
 
-      {/* FIX HERE */}
-      <FooterNav activeTab={activeTab} setActiveTab={setActiveTab} />
-    </div>
+        {/* Footer Navigation */}
+        <FooterNav activeTab={activeTab} setActiveTab={setActiveTab} />
+      </div>
+    </BrowserRouter>
   );
 }
-

@@ -1,41 +1,34 @@
 import { motion } from "framer-motion";
 import { Home, Compass, Library, Search } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 type Tab = {
   name: string;
   icon: React.ReactNode;
+  path: string;
 };
 
-export default function FooterNav({
-  activeTab,
-  setActiveTab,
-}: {
-  activeTab: string;
-  setActiveTab: (t: string) => void;
-}) {
+export default function FooterNav() {
+  const location = useLocation();
+
   const tabs: Tab[] = [
-    { name: "Home", icon: <Home size={22} /> },
-    { name: "Explore", icon: <Compass size={22} /> },
-    { name: "Library", icon: <Library size={22} /> },
-    { name: "Search", icon: <Search size={22} /> },
+    { name: "Home", icon: <Home size={22} />, path: "/" },
+    { name: "Explore", icon: <Compass size={22} />, path: "/explore" },
+    { name: "Library", icon: <Library size={22} />, path: "/library" },
+    { name: "Search", icon: <Search size={22} />, path: "/search" },
   ];
 
   return (
     <nav className="fixed bottom-0 left-0 w-full bg-purple-900 shadow-inner z-50">
       <div className="flex justify-around items-center h-16">
         {tabs.map((tab) => {
-          const isActive = activeTab === tab.name;
+          const isActive = location.pathname === tab.path;
           return (
-            <motion.button
-              key={tab.name}
-              onClick={() => setActiveTab(tab.name)}
-              whileTap={{ scale: 0.9 }}
-              className="relative flex flex-col items-center justify-center text-white"
-            >
+            <Link key={tab.name} to={tab.path} className="flex flex-col items-center justify-center">
               <motion.div
                 animate={{ y: isActive ? -3 : 0 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={isActive ? "font-bold text-pink-600" : "font-normal"}
+                className={isActive ? "font-bold text-pink-600" : "font-normal text-white"}
               >
                 {tab.icon}
               </motion.div>
@@ -47,7 +40,7 @@ export default function FooterNav({
               >
                 {tab.name}
               </motion.span>
-            </motion.button>
+            </Link>
           );
         })}
       </div>

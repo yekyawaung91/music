@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "image": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/artworks/what-i've-done.png",
+    "title": "What I've Done",
+    "artist": "Linkin Park",
+    "Released": 2009,
+    "audio": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/mp3/what-i've-done.mp3",
+    "lyrics": "what-i've-done.txt"
+  },
+  {
+    "id": 2,
+    "image": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/artworks/need-you-now.png",
+    "title": "Need You Now",
+    "artist": "Lady A",
+    "Released": 2009,
+    "audio": "http://z114658-8k2si.ps01.zwhhosting.com/my-files/mp3/need-you-now.mp3",
+    "lyrics": "need-you-now.txt"
+  }
+]
