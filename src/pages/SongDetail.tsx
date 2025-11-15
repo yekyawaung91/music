@@ -53,11 +53,10 @@ export default function SongDetail() {
   };
 
   // Fetch lyrics & parse
-  // Fetch lyrics & parse
 useEffect(() => {
   if (!song?.lyrics) return;
 
-  fetch(`/src/data/${song.lyrics}`)
+  fetch(`/lyrics/${song.lyrics}`)
     .then((res) => res.text())
     .then((t) => {
       // Parse lyrics lines

@@ -6,7 +6,7 @@
     "artist": "Linkin Park",
     "released": 2007,
     "album": "Minutes To Midnight",
-    "audio": "https://www.dropbox.com/scl/fi/sb7h5awlm3j3n36agq29o/what-i-ve-done.mp3?dl=1",
+    "audio": "/songs/what-i've-done.mp3",
     "lyrics": "what-i've-done.txt"
   },
   {
@@ -16,7 +16,7 @@
     "artist": "Lady A",
     "released": 2010,
     "album": "Lady Antebellum",
-    "audio": "https://www.dropbox.com/scl/fi/tpl253bhdrpyf7zrc3noa/need-you-now.mp3?dl=1",
+    "audio": "/songs/need-you-now.mp3",
     "lyrics": "need-you-now.txt"
   },
   {
@@ -26,7 +26,7 @@
     "artist": "Sasha Alex Sloan",
     "released": 2019,
     "album": "Self Portrait",
-    "audio": "https://www.dropbox.com/scl/fi/14fglx9gueww5xrl59fey/dancing-with-your-ghost.mp3?dl=1",
+    "audio": "/songs/dancing-with-your-ghost.mp3",
     "lyrics": "dancing-with-your-ghost.txt"
   }
 ]
