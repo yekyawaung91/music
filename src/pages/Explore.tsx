@@ -66,7 +66,7 @@ export default function Explore() {
       </div>
     ) : (
       <div className="mt-1 w-full">
-        <div className="w-full h-1  rounded-full">
+        <div className="w-full h-1 bg-white/20 rounded-full">
         </div>
         <div className="flex justify-between text-xs mt-1">
           <span>0:00</span>
@@ -127,7 +127,7 @@ export default function Explore() {
         >
           <img
             src={`/artworks/${song.image}`}
-            className="w-full h-full object-contain bg-black/20 rounded-xl"
+            className="w-full h-full object-cover bg-black/20 rounded-xl"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.7 }}
@@ -188,7 +188,7 @@ export default function Explore() {
         >
           <div className="flex items-center gap-3 w-full">
             <motion.div
-              className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0"
+              className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0"
               whileHover={{ scale: 1.03 }}
             >
               <img

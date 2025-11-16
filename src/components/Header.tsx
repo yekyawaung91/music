@@ -1,26 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { User, Settings, Home, Music, Heart, X, Music2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
-
-  // Manual PWA install
-  useEffect(() => {
-    const handler = (e: any) => {
-      e.preventDefault();
-      setDeferredPrompt(e);
-    };
-    window.addEventListener("beforeinstallprompt", handler);
-    return () => window.removeEventListener("beforeinstallprompt", handler);
-  }, []);
-
-  const handleInstallClick = () => {
-    if (!deferredPrompt) return;
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => setDeferredPrompt(null));
-  };
 
   const menuItems = [
     { name: "Home", icon: <Home size={24} /> },
@@ -30,8 +13,15 @@ export default function Header() {
     { name: "Settings", icon: <Settings size={24} /> },
   ];
 
-  const overlayVariants = { hidden: { opacity: 0 }, visible: { opacity: 1 } };
-  const drawerVariants = { hidden: { x: "100%" }, visible: { x: 0 } };
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
+  const drawerVariants = {
+    hidden: { x: "100%" },
+    visible: { x: 0 },
+  };
 
   return (
     <>
@@ -40,26 +30,12 @@ export default function Header() {
         <h1 className="text-2xl font-bold flex items-center gap-2">
           <Music2 />𝕐𝕂𝔸 𝕄𝕦𝕤𝕚𝕔
         </h1>
-
-        <div className="flex items-center gap-3">
-          {/* Manual Install Button */}
-          {deferredPrompt && (
-            <button
-              onClick={handleInstallClick}
-              className="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 text-sm"
-            >
-              Install
-            </button>
-          )}
-
-          {/* Avatar */}
-          <img
-            src="/user.png"
-            alt="User Avatar"
-            className="w-10 h-10 rounded-full border border-white/30 cursor-pointer"
-            onClick={() => setIsDrawerOpen(true)}
-          />
-        </div>
+        <img
+          src="/user.png"
+          alt="User Avatar"
+          className="w-10 h-10 rounded-full border border-white/30 cursor-pointer"
+          onClick={() => setIsDrawerOpen(true)}
+        />
       </header>
 
       {/* Drawer + Overlay */}
@@ -77,56 +53,59 @@ export default function Header() {
               onClick={() => setIsDrawerOpen(false)}
             />
 
-            {/* Drawer Panel */}
-            <motion.div
-              className="fixed top-0 right-0 w-80 h-full backdrop-blur-md bg-purple-800/80 shadow-2xl z-50 flex flex-col rounded-l-xl"
-              variants={drawerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              transition={{ duration: 0.3, ease: "easeOut" }}
-            >
-              <div className="p-6 flex-1 flex flex-col gap-6 overflow-y-auto">
-                {/* Close Button */}
-                <button
-                  className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition"
-                  onClick={() => setIsDrawerOpen(false)}
-                >
-                  <X size={20} className="text-white" />
-                </button>
+          {/* Drawer Panel */}
+<motion.div
+  className="fixed top-0 right-0 w-80 h-full backdrop-blur-md bg-purple-800/80 shadow-2xl z-50 flex flex-col rounded-l-xl"
+  variants={drawerVariants}
+  initial="hidden"
+  animate="visible"
+  exit="hidden"
+  transition={{ duration: 0.3, ease: "easeOut" }}
+>
+  {/* Scrollable Content */}
+  <div className="p-6 flex-1 flex flex-col gap-6 overflow-y-auto">
+    {/* Close Button */}
+    <button
+      className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition"
+      onClick={() => setIsDrawerOpen(false)}
+    >
+      <X size={20} className="text-white" />
+    </button>
 
-                {/* User Info */}
-                <div className="flex items-center gap-4 mt-4">
-                  <img
-                    src="/user.png"
-                    alt="User Avatar"
-                    className="w-10 h-10 rounded-full border border-white/30"
-                  />
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-lg text-white">Ye Kyaw Aung</span>
-                    <span className="text-sm text-white/70">Premium Member</span>
-                  </div>
-                </div>
+    {/* User Info */}
+    <div className="flex items-center gap-4 mt-4">
+      <img
+        src="/user.png"
+        alt="User Avatar"
+        className="w-10 h-10 rounded-full border border-white/30"
+      />
+      <div className="flex flex-col">
+        <span className="font-semibold text-lg text-white">Ye Kyaw Aung</span>
+        <span className="text-sm text-white/70">Premium Member</span>
+      </div>
+    </div>
 
-                {/* Menu Items */}
-                <div className="flex flex-col gap-3 mt-6 mb-20">
-                  {menuItems.map((item) => (
-                    <button
-                      key={item.name}
-                      className="flex items-center gap-4 p-3 bg-white/10 rounded-xl text-white hover:bg-purple-600/40 hover:backdrop-blur-md font-medium transition-colors duration-200 shadow-sm"
-                    >
-                      {item.icon}
-                      {item.name}
-                    </button>
-                  ))}
-                </div>
-              </div>
+    {/* Menu Items */}
+    <div className="flex flex-col gap-3 mt-6 mb-20">
+      {menuItems.map((item) => (
+        <button
+          key={item.name}
+          className="flex items-center gap-4 p-3 bg-white/10 rounded-xl text-white hover:bg-purple-600/40 hover:backdrop-blur-md font-medium transition-colors duration-200 shadow-sm"
+        >
+          {item.icon}
+          {item.name}
+        </button>
+      ))}
+    </div>
+  </div>
 
-              {/* Version Info */}
-              <div className="absolute bottom-18 w-full p-4 border-t border-white/20 text-white/50 text-sm text-center bg-purple-800/90">
-                Version 1.0.0
-              </div>
-            </motion.div>
+  {/* Version Info */}
+  <div className="absolute bottom-18 w-full p-4 border-t border-white/20 text-white/50 text-sm text-center bg-purple-800/90">
+    Version 1.0.0
+  </div>
+</motion.div>
+
+
           </>
         )}
       </AnimatePresence>

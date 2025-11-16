@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import songs from "../data/songs.json";
 import { useEffect, useRef, useState } from "react";
-import { Heart, Play, Pause, Album, Shuffle, StepForward } from "lucide-react";
+import { Heart, Play, Pause, Album, Shuffle, StepForward, Calendar } from "lucide-react";
 
 type LyricLine = {
   time: number;
@@ -108,13 +108,10 @@ const handleShuffle = () => {
   </div>
 
   {/* Song Info 60% */}
-  <div className="flex flex-col gap-0.5 w-[65%]">
+  <div className="flex flex-col gap-0.8 w-[65%]">
   <h1 className="text-lg">{song.title}</h1>
   <p className="text-md text-amber-300">{song.artist}</p>
-  <p className="flex items-center gap-2 text-sm text-slate-200">
-    <Album size={16} className="text-slate-200" />
-    {song.album}
-  </p>
+
 
   {/* Play + Favorite */}
 <div className="flex gap-2 mt-1">
@@ -167,22 +164,55 @@ const handleShuffle = () => {
 
         {/* Lyrics */}
         <div className="mt-6 bg-white/70 backdrop-blur-xl p-6 rounded-2xl shadow-md max-h-[600px] overflow-y-auto">
-          <h2 className="text-md font-semibold text-purple-600 mb-4">Lyrics</h2>
 
-          <div className="space-y-1 text-sm">
-            {lyricsLines.map((line, idx) => {
-              const isActive = currentTime >= line.time && (idx === lyricsLines.length - 1 || currentTime < lyricsLines[idx + 1].time);
-              return (
-                <p
-                  key={idx}
-                  className={`transition-colors duration-200 ${isActive ? "bg-purple-400/30 text-purple-900 rounded px-1" : "text-gray-700 px-1"}`}
-                >
-                  {line.text}
-                </p>
-              );
-            })}
-          </div>
-        </div>
+  {/* Album + Released */}
+  <div className="flex items-center gap-6 mb-2">
+    {/* Album */}
+    <div className="flex items-center gap-2">
+      <Album size={18} className="text-purple-600" />
+      <div className="leading-tight">
+        <p className="text-xs text-gray-600">Album</p>
+        <p className="text-sm font-semibold text-purple-900">{song.album}</p>
+      </div>
+    </div>
+
+    {/* Released */}
+    <div className="flex items-center gap-2">
+      <Calendar size={18} className="text-purple-600" />
+      <div className="leading-tight">
+        <p className="text-xs text-gray-600">Released</p>
+        <p className="text-sm font-semibold text-purple-900">{song.released}</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Lyrics Title */}
+  <h2 className="text-md font-semibold text-purple-600 mb-3">Lyrics</h2>
+
+  {/* Lyrics Lines */}
+  <div className="space-y-1 text-sm">
+    {lyricsLines.map((line, idx) => {
+      const isActive =
+        currentTime >= line.time &&
+        (idx === lyricsLines.length - 1 ||
+          currentTime < lyricsLines[idx + 1].time);
+
+      return (
+        <p
+          key={idx}
+          className={`transition-colors duration-200 ${
+            isActive
+              ? "bg-purple-400/30 text-purple-900 rounded px-1"
+              : "text-gray-700 px-1"
+          }`}
+        >
+          {line.text}
+        </p>
+      );
+    })}
+  </div>
+</div>
+
       </div>
     </div>
   );

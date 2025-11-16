@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "what-i've-done.png",
+    "image": "what-i've-done.jpg",
     "title": "What I've Done",
     "artist": "Linkin Park",
     "released": 2007,
@@ -13,7 +13,7 @@
   },
   {
     "id": 2,
-    "image": "need-you-now.png",
+    "image": "need-you-now.jpg",
     "title": "Need You Now",
     "artist": "Lady A",
     "released": 2010,
@@ -24,7 +24,7 @@
   },
   {
     "id": 3,
-    "image": "dancing-with-your-ghost.png",
+    "image": "dancing-with-your-ghost.jpg",
     "title": "Dancing With Your Ghost",
     "artist": "Sasha Alex Sloan",
     "released": 2019,
@@ -35,35 +35,35 @@
   },
   {
     "id": 4,
-    "image": "dancing-with-your-ghost.png",
+    "image": "always.jpg",
     "title": "Always",
     "artist": "Isak Danielson",
     "released": 2018,
     "album": "Yours",
-    "audio": "/songs/dancing-with-your-ghost.mp3",
+    "audio": "/songs/always.mp3",
     "lyrics": "dancing-with-your-ghost.txt",
     "playlist": ""
   },
   {
     "id": 5,
-    "image": "dancing-with-your-ghost.png",
+    "image": "criminal.jpg",
     "title": "Criminal",
     "artist": "Britney Spears",
     "released": 2011,
     "album": "Femme Fatale",
-    "audio": "/songs/dancing-with-your-ghost.mp3",
-    "lyrics": "dancing-with-your-ghost.txt",
+    "audio": "/songs/criminal.mp3",
+    "lyrics": "criminal.txt",
     "playlist": ""
   },
   {
     "id": 6,
-    "image": "dancing-with-your-ghost.png",
-    "title": "Here Without You",
-    "artist": "3 Doors Down",
-    "released": 2003,
-    "album": "Femme Fatale",
-    "audio": "/songs/dancing-with-your-ghost.mp3",
-    "lyrics": "dancing-with-your-ghost.txt",
+    "image": "only-teardrops.jpg",
+    "title": "Only Teardrops",
+    "artist": "Emmelie De Forest",
+    "released": 2013,
+    "album": "Only Teardrops",
+    "audio": "/songs/only-teardrops.mp3",
+    "lyrics": "only-teardrops.txt",
     "playlist": ""
   }
 ]
