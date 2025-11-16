@@ -24,8 +24,8 @@ export default function MusicCard({ image, title, artist, active, onClick }: Pro
         whileHover={{ scale: 1.03 }}
       >
         <img
-          src={image}
-          className="w-full h-full object-cover bg-black/20 rounded-xl"
+          src={`artworks/${image}`}
+          className="w-full h-full object-contain bg-black/20 rounded-xl"
         />
 
         {/* Hover / Active Overlay */}

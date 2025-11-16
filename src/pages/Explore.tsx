@@ -77,7 +77,7 @@ export default function Explore() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-400 to-violet-500 text-white pb-28">
+    <div className="min-h-screen bg-linear-to-b from-purple-400 to-violet-500 text-white pb-28">
       <Header />
 
       {/* Search */}
@@ -111,61 +111,65 @@ export default function Explore() {
       {/* GRID VIEW */}
 {view === "grid" && (
   <div className="px-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    {songs.map((song) => {
-      const active = currentSong?.audio === song.audio && isPlaying;
-      return (
-        <div
-          key={song.title}
-          className={`flex flex-col cursor-pointer p-1 rounded-xl ${
-            active ? "bg-pink-700/30" : "bg-black/10"
-          }`}
-          onClick={() => togglePlay(song)}
+  {songs.map((song) => {
+    const active = currentSong?.audio === song.audio && isPlaying;
+    return (
+      <div
+        key={song.title}
+        className={`flex flex-col cursor-pointer p-1 rounded-xl ${
+          active ? "bg-pink-700/30" : "bg-black/10"
+        }`}
+        onClick={() => togglePlay(song)}
+      >
+        <motion.div
+          className="relative w-full h-36 rounded-xl overflow-hidden"
+          whileHover={{ scale: 1.03 }}
         >
+          <img
+            src={`/artworks/${song.image}`}
+            className="w-full h-full object-contain bg-black/20 rounded-xl"
+          />
           <motion.div
-            className="relative w-full h-36 rounded-xl overflow-hidden"
-            whileHover={{ scale: 1.03 }}
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileHover={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.25 }}
+            className="absolute inset-0 flex items-center justify-center bg-purple-600/40 rounded-xl"
           >
-            <img
-              src={`/artworks/${song.image}`}
-              className="w-full h-full object-contain bg-black/20 rounded-xl"
-            />
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileHover={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.25 }}
-              className="absolute inset-0 flex items-center justify-center bg-purple-600/40 rounded-xl"
-            >
-              {active ? <Pause size={36} /> : <Play size={36} />}
-            </motion.div>
-
-            <AnimatePresence>
-              {active && (
-                <motion.div
-                  className="absolute inset-0 rounded-xl border-2 border-white/30"
-                  animate={{ scale: [1, 1.05, 1], opacity: [0.8, 0.4, 0.8] }}
-                  transition={{ repeat: Infinity, duration: 1.2 }}
-                />
-              )}
-            </AnimatePresence>
+            {active ? <Pause size={36} /> : <Play size={36} />}
           </motion.div>
 
-          <div className="flex items-center justify-between mt-2">
-            <span className="text-sm font-medium truncate">{song.title}</span>
+          <AnimatePresence>
+            {active && (
+              <motion.div
+                className="absolute inset-0 rounded-xl border-2 border-white/30"
+                animate={{ scale: [1, 1.05, 1], opacity: [0.8, 0.4, 0.8] }}
+                transition={{ repeat: Infinity, duration: 1.2 }}
+              />
+            )}
+          </AnimatePresence>
+        </motion.div>
 
-            <Link
-              to={`/song/${song.id}`}
-              className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 hover:bg-pink-500 transition-colors"
-            >
-              <Eye size={18} className="text-white/80 hover:text-white" />
-            </Link>
-          </div>
-          <span className="text-xs text-white/70 truncate block">{song.artist}</span>
+        <div className="flex items-center justify-between mt-2">
+          <span className="text-sm font-medium truncate">{song.title}</span>
 
-          {renderProgress(song)}
+          {/* Eye Icon FIX */}
+          <Link
+            to={`/song/${song.id}`}
+            onClick={(e) => e.stopPropagation()} // <-- IMPORTANT FIX
+            className="flex items-center justify-center w-6 h-6 rounded-full bg-white/10 hover:bg-pink-500 transition-colors"
+          >
+            <Eye size={18} className="text-white/80 hover:text-white" />
+          </Link>
         </div>
-      );
-    })}
-  </div>
+
+        <span className="text-xs text-white/70 truncate block">{song.artist}</span>
+
+        {renderProgress(song)}
+      </div>
+    );
+  })}
+</div>
+
 )}
 
 
@@ -184,7 +188,7 @@ export default function Explore() {
         >
           <div className="flex items-center gap-3 w-full">
             <motion.div
-              className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0"
+              className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0"
               whileHover={{ scale: 1.03 }}
             >
               <img

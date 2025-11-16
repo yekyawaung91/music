@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import songs from "../data/songs.json";
 import { useEffect, useRef, useState } from "react";
-import { Heart, Clock, Play, Pause, Album } from "lucide-react";
+import { Heart, Play, Pause, Album, Shuffle, StepForward } from "lucide-react";
 
 type LyricLine = {
   time: number;
@@ -76,6 +76,11 @@ useEffect(() => {
     .catch(() => setLyricsLines([{ time: 0, text: "Lyrics not available." }]));
 }, [song]);
 
+const handleShuffle = () => {
+  // const randomIndex = Math.floor(Math.random() * songs.length);
+  // const randomSong = songs[randomIndex];
+  // togglePlay(randomSong);
+};
 
   if (!song) {
     return (
@@ -86,13 +91,13 @@ useEffect(() => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-400 to-violet-500 text-white pb-28">
+    <div className="min-h-screen bg-linear-to-b from-purple-400 to-violet-500 text-white pb-28">
       <Header />
 
       <div className="mx-auto px-6 py-6">
         <div className="flex gap-4 items-start">
   {/* Artwork 40% */}
-  <div className="flex-shrink-0 w-[35%]">
+  <div className="shrink-0 w-[35%]">
     <div className="w-full aspect-square rounded-3xl overflow-hidden shadow-xl">
       <img
         src={`/artworks/${song.image}`}
@@ -104,30 +109,48 @@ useEffect(() => {
 
   {/* Song Info 60% */}
   <div className="flex flex-col gap-1 w-[65%]">
-    <h1 className="text-xl font-bold">{song.title}</h1>
+    <h1 className="text-lg">{song.title}</h1>
     <p className="text-md text-amber-300">{song.artist}</p>
     <p className="flex items-center gap-2 text-sm text-slate-200">
       <Album size={16} className="text-slate-200" />
-      {song.album}, 
-      <Clock size={16} className="text-slate-200" />
-      {formatTime(duration)}
+      {song.album}
     </p>
 
     {/* Play + Favorite */}
     <div className="flex gap-2 mt-2">
-      <button
-        onClick={togglePlay}
-        className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-purple-600 text-white text-sm hover:bg-purple-700"
-      >
-        {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-        {isPlaying ? "Pause" : "Play"}
-      </button>
 
-      <button className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-pink-600 text-white text-sm hover:bg-pink-700">
-        <Heart size={16} />
-        Favorite
-      </button>
-    </div>
+  {/* Play / Pause */}
+  <button
+    onClick={togglePlay}
+    className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-600 text-white hover:bg-purple-700"
+  >
+    {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+  </button>
+
+  {/* Shuffle */}
+  <button
+    onClick={handleShuffle}
+    className="flex items-center justify-center w-10 h-10 rounded-full bg-orange-600 text-white hover:bg-blue-700"
+  >
+    <StepForward size={18} />
+  </button>
+
+  {/* Shuffle */}
+  <button
+    onClick={handleShuffle}
+    className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+  >
+    <Shuffle size={18} />
+  </button>
+
+  {/* Favorite */}
+  <button
+    className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-600 text-white hover:bg-pink-700"
+  >
+    <Heart size={18} />
+  </button>
+</div>
+
 
     {/* Progress Bar */}
     <div className="mt-2 w-full">

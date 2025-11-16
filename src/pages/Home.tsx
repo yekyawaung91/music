@@ -1,28 +1,24 @@
-    import Header from "../components/Header";
+import Header from "../components/Header";
 import SectionTitle from "../components/SectionTitle";
 import MusicCard from "../components/MusicCard";
-
-const songs = [
-  {
-    image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
-    title: "What I've Done What I've Done",
-    artist: "DJ Nova",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
-    title: "Ocean Breeze",
-    artist: "WaveFlow",
-  },
-  {
-    image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f",
-    title: "Golden Hour",
-    artist: "Aura Beats",
-  },
-];
+import type { Song } from "../types/song";
+import songsData from "../data/songs.json";
 
 export default function Home() {
+  const songs: Song[] = songsData;
+
+  // Recently Added - order by id desc, take 3
+  const recentlyAdded = [...songs]
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3);
+
+  // Recommended - pick 3 random songs
+  const recommended = songs
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 3);
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-400 to-violet-500 text-white pb-20">
+    <div className="min-h-screen bg-linear-to-b from-purple-400 to-violet-500 text-white pb-20">
       <Header />
       <div className="px-4 mt-4">
         <input
@@ -32,17 +28,17 @@ export default function Home() {
         />
       </div>
 
-      <SectionTitle title="Recently Played" action="See all" />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2 ">
-        {songs.map((song) => (
-          <MusicCard key={song.title} {...song} />
+      <SectionTitle title="Recently Added" action="See all" />
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-4 px-4 py-2">
+        {recentlyAdded.map((song) => (
+          <MusicCard key={song.id} {...song} />
         ))}
       </div>
 
       <SectionTitle title="Recommended" action="More" />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2">
-        {songs.map((song) => (
-          <MusicCard key={song.title} {...song} />
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-4 px-4 py-2">
+        {recommended.map((song) => (
+          <MusicCard key={song.id} {...song} />
         ))}
       </div>
     </div>

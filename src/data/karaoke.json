@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "image": "what-i've-done.png",
+    "title": "အချစ်စစ်ရဲ့တန်ဖိုး",
+    "artist": "မနော",
+    "released": 2007,
+    "album": "Minutes To Midnight",
+    "audio": "/karaoke/အချစ်စစ်ရဲ့တန်ဖိုး.mp3",
+    "lyrics": "what-i've-done.txt",
+    "playlist": "Eng Pops",
+    "favourite":"true"
+  }
+]

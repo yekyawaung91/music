@@ -7,7 +7,9 @@
     "released": 2007,
     "album": "Minutes To Midnight",
     "audio": "/songs/what-i've-done.mp3",
-    "lyrics": "what-i've-done.txt"
+    "lyrics": "what-i've-done.txt",
+    "playlist": "Eng Pops",
+    "favourite":"true"
   },
   {
     "id": 2,
@@ -17,7 +19,8 @@
     "released": 2010,
     "album": "Lady Antebellum",
     "audio": "/songs/need-you-now.mp3",
-    "lyrics": "need-you-now.txt"
+    "lyrics": "need-you-now.txt",
+    "playlist": "Eng Pops"
   },
   {
     "id": 3,
@@ -27,6 +30,40 @@
     "released": 2019,
     "album": "Self Portrait",
     "audio": "/songs/dancing-with-your-ghost.mp3",
-    "lyrics": "dancing-with-your-ghost.txt"
+    "lyrics": "dancing-with-your-ghost.txt",
+    "playlist": "Eng Pops"
+  },
+  {
+    "id": 4,
+    "image": "dancing-with-your-ghost.png",
+    "title": "Always",
+    "artist": "Isak Danielson",
+    "released": 2018,
+    "album": "Yours",
+    "audio": "/songs/dancing-with-your-ghost.mp3",
+    "lyrics": "dancing-with-your-ghost.txt",
+    "playlist": ""
+  },
+  {
+    "id": 5,
+    "image": "dancing-with-your-ghost.png",
+    "title": "Criminal",
+    "artist": "Britney Spears",
+    "released": 2011,
+    "album": "Femme Fatale",
+    "audio": "/songs/dancing-with-your-ghost.mp3",
+    "lyrics": "dancing-with-your-ghost.txt",
+    "playlist": ""
+  },
+  {
+    "id": 6,
+    "image": "dancing-with-your-ghost.png",
+    "title": "Here Without You",
+    "artist": "3 Doors Down",
+    "released": 2003,
+    "album": "Femme Fatale",
+    "audio": "/songs/dancing-with-your-ghost.mp3",
+    "lyrics": "dancing-with-your-ghost.txt",
+    "playlist": ""
   }
 ]
