@@ -108,64 +108,60 @@ const handleShuffle = () => {
   </div>
 
   {/* Song Info 60% */}
-  <div className="flex flex-col gap-1 w-[65%]">
-    <h1 className="text-lg">{song.title}</h1>
-    <p className="text-md text-amber-300">{song.artist}</p>
-    <p className="flex items-center gap-2 text-sm text-slate-200">
-      <Album size={16} className="text-slate-200" />
-      {song.album}
-    </p>
+  <div className="flex flex-col gap-0.5 w-[65%]">
+  <h1 className="text-lg">{song.title}</h1>
+  <p className="text-md text-amber-300">{song.artist}</p>
+  <p className="flex items-center gap-2 text-sm text-slate-200">
+    <Album size={16} className="text-slate-200" />
+    {song.album}
+  </p>
 
-    {/* Play + Favorite */}
-    <div className="flex gap-2 mt-2">
-
-  {/* Play / Pause */}
+  {/* Play + Favorite */}
+<div className="flex gap-2 mt-1">
   <button
     onClick={togglePlay}
-    className="flex items-center justify-center w-10 h-10 rounded-full bg-purple-600 text-white hover:bg-purple-700"
+    className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-600 text-white hover:bg-purple-700"
   >
-    {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+    {isPlaying ? <Pause size={16} /> : <Play size={16} />}
   </button>
 
-  {/* Shuffle */}
   <button
     onClick={handleShuffle}
-    className="flex items-center justify-center w-10 h-10 rounded-full bg-orange-600 text-white hover:bg-blue-700"
+    className="flex items-center justify-center w-8 h-8 rounded-full bg-orange-600 text-white hover:bg-blue-700"
   >
-    <StepForward size={18} />
+    <StepForward size={16} />
   </button>
 
-  {/* Shuffle */}
   <button
     onClick={handleShuffle}
-    className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+    className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white hover:bg-blue-700"
   >
-    <Shuffle size={18} />
+    <Shuffle size={16} />
   </button>
 
-  {/* Favorite */}
   <button
-    className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-600 text-white hover:bg-pink-700"
+    className="flex items-center justify-center w-8 h-8 rounded-full bg-pink-600 text-white hover:bg-pink-700"
   >
-    <Heart size={18} />
+    <Heart size={16} />
   </button>
 </div>
 
 
-    {/* Progress Bar */}
-    <div className="mt-2 w-full">
-      <div className="w-full h-1 bg-black/20 rounded-full">
-        <div
-          className="h-1 bg-white rounded-full"
-          style={{ width: `${(currentTime / duration) * 100}%` }}
-        />
-      </div>
-      <div className="flex justify-between text-xs text-white mt-1">
-        <span>{formatTime(currentTime)}</span>
-        <span>{formatTime(duration)}</span>
-      </div>
+  {/* Progress Bar */}
+  <div className="mt-1 w-full"> {/* mt-2 → mt-1 နည်းချင်ရင် */}
+    <div className="w-full h-1 bg-black/20 rounded-full">
+      <div
+        className="h-1 bg-white rounded-full"
+        style={{ width: `${(currentTime / duration) * 100}%` }}
+      />
+    </div>
+    <div className="flex justify-between text-xs text-white mt-1">
+      <span>{formatTime(currentTime)}</span>
+      <span>{formatTime(duration)}</span>
     </div>
   </div>
+</div>
+
 </div>
 
 

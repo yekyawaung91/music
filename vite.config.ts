@@ -12,16 +12,14 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.svg", "robots.txt"],
-
       manifest: {
-        name: "My Music App",
-        short_name: "MusicApp",
+        name: "YKA Music",
+        short_name: "YKA Music",
         description: "Music player with PWA support",
         theme_color: "#6b21a8", // purple color
         background_color: "#ffffff",
         display: "standalone",
         start_url: "/",
-
         icons: [
           {
             src: "pwa-192x192.png",
